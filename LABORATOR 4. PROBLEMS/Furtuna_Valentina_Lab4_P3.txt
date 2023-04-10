@@ -1,0 +1,79 @@
+import java.util.Scanner;
+
+/*Furtuna Valentina P3.
+ * Scrieți o clasă Java care modelează o matrice de valori întregi. 
+ * Atât dimensiunile matricii cât și tabloul bidimensional de elemente 
+ * sunt atribute private în clasă, accesate prin intermediul unor 
+ * metode publice setter getter. Includeți în clasă metode de afișare 
+ * a matricii, de calcul și retur a numărului de grupuri de elemente 
+ * (9 valori învecinate) care nu diferă cu mai mult de 5% față de un 
+ * anumit prag.
+ */
+
+
+public class Problema3 {
+	 
+	static int [][]generation(int x, int y, Scanner read) 
+	{
+		int [][]mat=new int[x][y];
+
+		System.out.println("Introduceti valorile:");
+		
+		for(int i=0; i<x; i++)
+			for(int j=0;j<y; j++) {
+				System.out.print("\n["+i+"]["+j+"]");
+				mat[i][j]=read.nextInt();
+			}
+		return mat;
+
+	}
+	
+	
+	static void afisare(int [][] mat, int x, int y)
+	{
+		for (int i=0; i<x; i++)
+		{System.out.println();
+		for (int j=0; j<y; j++) {
+			System.out.print(mat[i][j]+" ");
+	     	}
+		}
+	}
+	
+	public static void main(String []args) {
+		
+		Scanner read = new Scanner(System.in);
+		
+		System.out.println("Introduceti dimensiunea matricei");
+        int x=read.nextInt();
+        int y=read.nextInt();
+        
+        int [][]mat= new int[x][y];
+        
+        mat=generation(x,y,read);
+        
+        System.out.println("Introduceti valoarea de prag");
+		int prag=read.nextInt();
+		
+		for (int i=0; i<x; i++)
+			for(int j=0; j<y; j++) {
+				float pragSuperior=(float) (1.05*prag);
+				float pragInferior=(float) (0.95*prag);
+			if(mat[i][j]>pragSuperior || mat[i][j]<pragInferior)
+				mat[i][j]=0;
+			}
+		afisare(mat,x,y);
+		read.close();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,90 @@
+//Furtuna Valentina P5. 
+/*. Scrieți o aplicație ce verifică dacă 3 puncte aleatoare formează un triunghi obtuzunghic. Dacă nu este îndeplinită 
+condiția, se aruncă o excepție specifică: TriunghiAscutitunghic, TriunghiDreptunghic. Dacă cele 3 puncte se află pe 
+aceeași dreaptă sau dacă segmentele pe care le determină nu pot forma un triunghi, se aruncă o excepție 
+TriunghiImposibil, iar în blocul catch aferent, se afișează un mesaj corespunzător și se aruncă o excepție de tip 
+RuntimeException.*/
+
+
+
+class Ascutit extends Throwable{
+	public Ascutit(){
+	super("Triunghiul generat este ascutitunghic.");
+	}
+}
+	
+class Drept extends Throwable{
+	public Drept() {
+		super("Triunghiul generat este dreptunghic.");
+	}
+}
+
+class Dreapta extends Throwable{
+	public Dreapta() {
+		super("Punctele generate sunt coliniare.");
+	}
+}
+	
+class Exceptii {
+	
+	void TriunghiAscutitunghic(double cosA,double cosB,double cosC) throws Ascutit{
+		if(cosA>0 && cosB>0 && cosC>0) 
+			throw new Ascutit();
+	}
+	
+	void TriunghiDreptunghic(double cosA,double cosB,double cosC) throws Drept{
+		if(cosA==0 || cosB==0 || cosC==0) 
+			throw new Drept();
+	}
+	
+	void TriunghiImposibil(int x1,int x2,int x3,int y1,int y2,int y3) throws Dreapta{
+		if((x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2))==0 ) 
+			throw new Dreapta();
+	}
+}
+
+public class Triunghi {
+
+	public static void main(String []args) {
+		int x1,y1;
+		int x2,y2;
+		int x3,y3;
+		
+		x1=(int) (Math.random() *100);
+		y1=(int) (Math.random() *100);
+		
+		x2=(int) (Math.random() *100);
+		y2=(int) (Math.random() *100);
+		
+		x3=(int) (Math.random() *100);
+		y3=(int) (Math.random() *100);
+		
+		double a=Math.sqrt(  (x2-x1)*(x2-x1) + (y2-y1)*(y2-y1)  );
+		double b=Math.sqrt(  (x3-x2)*(x3-x2) + (y3-y2)*(y3-y2)  );
+		double c=Math.sqrt(  (x3-x1)*(x3-x1) + (y3-y1)*(y3-y1)  );
+		
+		double cosA=(b*b+c*c-a*a)/(2*b*c);
+		double cosB=(a*a+c*c-b*b)/(2*a*c);
+		double cosC=(a*a+b*b-c*c)/(2*a*b);
+		
+		if(cosA<0 ||cosB<0 || cosC<0) {
+			System.out.println("Triunghiul generat este unul obtuzunghic.");
+		}
+		else {
+			Exceptii ob=new Exceptii();
+			try {
+				ob.TriunghiAscutitunghic(cosA, cosB, cosC);
+				ob.TriunghiDreptunghic(cosA, cosB, cosC);
+				ob.TriunghiImposibil(x1, x2, x3, y1, y2, y3);
+			}catch(Ascutit| Drept| Dreapta e)  {
+				e.printStackTrace();
+			
+				throw new RuntimeException();
+			}
+		}
+	}
+	
+}
+
+	
+

@@ -1,0 +1,24 @@
+//Furtuna Valentina P3. Pornind de la problema precedenta, copiati 
+//primele 3 caractere din sir intr-un alt tablou si afisati rezultatul 
+//obtinut (folositi metoda arraycopy() din clasa System)
+
+import java.util.Scanner;
+
+public class Lab3ex3 {
+
+	private static Scanner reading;
+	public static void main(String[] args) {
+		
+		String sir;
+		
+		System.out.println("Introduceti un sir de caractere");
+		reading = new Scanner(System.in);
+		sir = reading.nextLine(); 
+		char a[] = sir.toCharArray();
+		
+		char b[] = new char[3];
+		System.arraycopy(a, 0, b, 0, 3);
+        System.out.println(String.valueOf(b));
+		
+}
+}

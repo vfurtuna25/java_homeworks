@@ -1,0 +1,40 @@
+
+//Furtuna Valentina. P3. o aplicatie Java in care se citesc de la tastatura 2 valori intregi si se afiseaza cmmdc-ul valorilor
+
+
+
+
+import java.util.Scanner;
+
+
+public class Main
+ {
+      public static void main(String[] args) {
+
+    	  int n1, n2;
+  		
+  		Scanner scanner = new Scanner(System.in);
+  		
+  		System.out.println("Introduceti primul numar intreg");
+  		n1 = scanner.nextInt();
+  		System.out.println("Introduceti al doilea numar intreg");
+  		n2 = scanner.nextInt();
+
+  		if (n1*n2 == 0) {
+  			System.out.println("Cel mai mare divizor comun este: "+(n1+n2));
+  			}
+  		else
+        {
+            while(n1!=n2) {
+                if(n1>n2) {
+                    n1=n1-n2;
+                }
+                else {
+                    n2=n2-n1;
+                }
+            }
+            System.out.println("Cel mai mare divizor comun este: "+n1);
+        }
+
+      }
+ }

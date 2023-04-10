@@ -1,0 +1,44 @@
+//Furtuna Valentina P2. Cititi un sir de caractere de la intrarea standard. 
+//Transformati sirul intr-un tablou de caractere. Cautati in acest 
+//tablou un caracter specificat in program. Afisati numarul de aparitii.
+
+import java.util.Scanner;
+
+public class Lab3_Ex2 {
+	private static Scanner reading;
+	public static void main(String[] args) {
+
+		System.out.println("Introduceti un sir de caractere");
+		String sir;
+		reading = new Scanner(System.in);
+		sir = reading.nextLine(); 
+	
+
+		char a[] = sir.toCharArray();
+		
+
+		int aparitii=0;
+		for(int i = 0; i<a.length; i++)
+		{
+		
+			 
+			if (a[i]=='i')
+			
+			{
+				aparitii++;
+			}
+		}
+		
+		
+		
+		if(aparitii!=0)
+     	{
+			System.out.println("A fost gasit de: "+ aparitii);
+		}
+		else
+		{
+			System.out.println("Nu a fost gasita!");
+		}
+	}
+
+}

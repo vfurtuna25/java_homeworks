@@ -1,0 +1,26 @@
+//Furtuna Valentina P1.aplicatie Java in care cititi de la tastatura o valoare 
+//intreaga si se afiseaza factul numarului citit
+
+
+import java.lang.Math;
+import java.util.Scanner;
+
+
+public class lab2ex2 {
+
+	public static void main(String[] args) {
+		
+		int num;
+		
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Introduceti un numar intreg");
+		num = scanner.nextInt();
+		
+		 long fact=1;
+		 for (int i=1; i<=num; ++i)
+			 fact = fact * i;
+		 
+		 System.out.printf("factul lui %d = %d", num, fact);
+		
+	}
+}

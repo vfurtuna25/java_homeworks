@@ -1,0 +1,61 @@
+/*Furtuna Valentina P1.
+ * Scrieti o aplicatie Java in care cititi o valoare intreaga. In cazul in care valoarea intreaga este cuprinsa intre 1-12 
+sa se afiseze luna corespunzatoare. Considerati cazul in care valoarea introdusa este un sir de caractere si daca 
+aceasta corespunde unei luni din an afisati valoarea numerica a lunii.
+ */
+
+import java.util.Scanner;
+
+
+public class Switch_01 {
+	public static void main(String[] args) {
+		int month;
+	    String yearMonth;
+	    
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("\nIntroduceti o valoare intreaga, pentru a afisa luna respectiva:");
+		month = scanner.nextInt();
+		
+		switch (month) {
+			case 1: yearMonth = "ianuarie"; break;
+			case 2: yearMonth = "februarie"; break;
+			case 3: yearMonth = "martie"; break;
+			case 4: yearMonth = "aprilie"; break;
+			case 5: yearMonth = "mai"; break;
+			case 6: yearMonth = "iunie"; break;
+			case 7: yearMonth = "iulie"; break;
+			case 8: yearMonth = "august"; break;
+			case 9: yearMonth = "septembrie"; break;
+			case 10: yearMonth = "octombrie"; break;
+			case 11: yearMonth = "noiembrie"; break;
+			case 12: yearMonth = "decembrie"; break;
+			default: yearMonth = "numar incorect"; break;
+		}
+		System.out.println("Luna este "+yearMonth);
+
+		scanner.nextLine();
+		System.out.println("\nIntroduceti o luna, pentru a afisa valoarea numerica a acesteia");
+		yearMonth = scanner.nextLine();
+
+		switch (yearMonth) { 
+			case "ianuarie": 	month = 1; break; 
+			case "februarie": 	month = 2; break; 
+			case "martie":  month = 3; break; 
+			case "aprilie": 	month = 4; break; 
+			case "mai": 	month = 5; break; 
+			case "iunie": 	month = 6; break; 
+			case "iulie": 	month = 7; break; 
+			case "august": 	month = 8; break; 
+			case "septembrie": 	month = 9; break; 
+			case "octombrie": 	month = 10; break; 
+			case "noiembrie": 	month = 11; break; 
+			case "decembrie": 	month = 12; break; 
+			default: 		month = 0; 
+		} 
+		if(month!=0)
+			System.out.println("Luna nr: "+month);
+		else
+			System.out.println("nu exista");
+	}
+}

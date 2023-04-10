@@ -1,0 +1,70 @@
+
+//Furtuna Valentina P4. Scrieti o aplicatie Java care defineste 
+//o valoare intreaga si apoi afiseaza reprezentarea ei binară, 
+//octală și hexazecimală. Scrieți metode de conversie a valorii 
+//citite în diferite baze de numeratie.
+
+
+import java.util.Scanner;
+
+public class Lab3ex4 {
+
+	public static void toBinary(int decimal){    
+	     int binary[] = new int[40];    
+	     int index = 0;    
+	     while(decimal > 0){    
+	       binary[index++] = decimal%2;    
+	       decimal = decimal/2;    
+	     }    
+	     for(int i = index-1;i >= 0;i--){    
+	       System.out.print(binary[i]);    
+	     }
+	}  
+
+	public static String toOctal (int n)
+	{
+		int uc;
+	    String str=""; 
+	    char dig[]={'0','1','2','3','4','5','6','7'};
+	    while(n>0)
+	    {
+	       uc=n%8; 
+	       str=dig[uc]+str; 
+	       n=n/8;
+	    }
+	    return str;
+	}
+	
+	public static String toHex(int n){    
+	     int uc;  
+	     String hex="";   
+	     char hexchars[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};  
+	    while(n>0)  
+	     {  
+	       uc=n%16;   
+	       hex=hexchars[uc]+hex;   
+	       n=n/16;  
+	     }  
+	    return hex;  
+	}    
+	
+	private static Scanner read;
+	public static void main(String[] args) {
+
+		 System.out.println("Introduceti valoarea lui unui numar intreg");
+		 read = new Scanner(System.in); 
+		 int a = read.nextInt();
+
+		 
+		System.out.println("\nValoarea binara a numarului este: "+Integer.toBinaryString(a));
+		System.out.println("Valoarea octala a numarului este: "+Integer.toOctalString(a));
+		System.out.println("Valoarea hexazecimala a a numarului este: "+Integer.toHexString(a));
+		
+		
+		System.out.print("Valoarea binara a numarului folosind o functie: "); toBinary(a);
+		System.out.println("\nValoarea octala a numarului folosind o functie: " + toOctal(a));
+		System.out.println("Valoarea hexazecimala a numarului folosind o functie: " + toHex(a));
+		
+		
+} // end of class 
+}

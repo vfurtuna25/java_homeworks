@@ -1,0 +1,47 @@
+/*. Furtuna Valentina P9. Se defineste un sir de variabile de tip String care va fi populat cu toate cartile dintr-un pachet de joc. Se vor 
+extrage aleator carti in pachet pana cand cartea curenta va fi de trefla cu valoarea mai mare decat 8. Sa se 
+afiseze la fiecare pas cartea curenta si numarul de carti deja extrase.
+Indiciu: Folosiți un generator de numere aleatoare. Cartile deja extrase sunt eliminate.*/
+
+
+import java.util.Random;
+
+public class Lab3ex9 {
+	
+	public static void main(String[] args) {
+
+		 String PachetCarti[] = { "2Trefla", "2Romb", "2Inima", "2Frunza",
+				 				"3Trefla", "3Romb", "3Inima", "3Frunza",
+				 				"4Trefla", "4Romb", "4Inima", "4Frunza",
+				 				"5Trefla", "5Romb", "5Inima", "5Frunza",
+				 				"6Trefla", "6Romb", "6Inima", "6Frunza",
+				 				"7Trefla", "7Romb", "7Inima", "7Frunza",
+				 				"8Trefla", "8Romb", "8Inima", "8Frunza",
+				 				"9Trefla", "9Romb", "9Inima", "9Frunza",
+				 				"10Trefla", "10Romb", "10Inima", "10Frunza",
+				 				"JTrefla", "JRomb", "JInima", "JFrunza",
+				 				"QTrefla", "QRomb", "QInima", "QFrunza",
+				 				"KTrefla", "KRomb", "KInima", "KFrunza",
+				 				"ATrefla", "ARomb", "AInima", "AFrunza"};
+		 Random rand = new Random();
+		 int k = 1, ok = 0;
+		 while(ok==0)
+		 {
+			 int r = rand.nextInt(51);
+			 if(PachetCarti[r]!="0")
+			 {
+				 if(((PachetCarti[r].charAt(0)>='8')||((PachetCarti[r].charAt(0)=='1')&&(PachetCarti[r].charAt(1)=='0')))&&(PachetCarti[r].charAt(1)=='T')||(PachetCarti[r].charAt(2)=='T'))
+				 {
+					 System.out.println("A fost gasita cartea dupa criteriile impuse. Cartea este: " + PachetCarti[r] + "\tNumarul de carti extrase: " + k);
+					 ok = 1;
+				 } else {
+				 System.out.println("Cartea extrasa: " + PachetCarti[r] + "\t\tNumarul de carti extrase: " + k);
+				 k++;
+				 PachetCarti[r] = "0";
+				 }
+			 }
+		 }
+		
+		
+} // end of class 
+}

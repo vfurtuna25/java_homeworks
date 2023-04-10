@@ -1,0 +1,91 @@
+
+import java.util.Scanner;
+
+/*Furtuna Valentina Problema 8
+   Scrieți o aplicație Java care definește o cheie de autentificare de tipul: XXXXX-XXXXX-XXXXX-XXXXX, unde X 
+reprezintă un caracter ce poate fi cifră sau literă. Scrieți un program care verifică dacă această cheie are exact 4 
+grupuri de caractere a câte 5 caractere fiecare și separate prin caracterul ‘-‘. De asemenea, calculați numărul de 
+cifre și litere din cheia de autentificare. Numărul de cifre trebuie să fie mai mare decât numărul de litere, iar 
+numărul de litere nu poate să fie 0. În cazul în care nu este îndeplinită cel puțin o condiție din cele menționate 
+anterior, afișați mesajul: ”Cheie de autentificare incorectă!”
+ */
+ 
+public class problema8 {
+	
+	private static void verifica(String cheie) {
+		 
+		if(cheie.length()!=23)
+			Exit();
+		
+		isAlpha(cheie);
+	}
+	
+	//verifica cate grupuri de litere si cate liniute sunt
+	public static void isAlpha(String cheie) {
+		
+		char[]  chars = cheie.toCharArray();
+		int index = 0;
+		int grup = 1;
+		int linii = 0;
+		
+		for( char c : chars) {
+			if(index == 5) {
+				if(c=='-') {
+					grup++;
+					index = 0;
+					linii++;
+					continue;
+				}
+				else Exit();
+			}
+			
+			if(!Character.isLetter(c) && !Character.isDigit(c))
+				Exit();
+			index++;
+		}
+		
+		System.out.println("Avem "+grup+" grupuri de cate 5 litere sau cifre separate de "+linii+" liniute");
+		
+	}
+	
+	private static void Exit() {
+		
+		System.out.println("Cheie de autentificare incorecta!");
+		System.out.println("Reincercare: ");
+		Cheie();
+	}
+	
+	public static void main(String[] args) {
+		Cheie();
+	}
+	
+	private static void Cheie() {
+		
+		int litere = 0;
+		int cifre = 0;
+		
+		Scanner read = new Scanner(System.in);
+		String cheie = read.nextLine();
+		
+		verifica(cheie);
+		   
+		   char c1[] = cheie.toCharArray();
+		   for (char c : c1)
+		   {
+			   if(Character.isLetter(c))
+				   litere++;
+			   if(Character.isDigit(c))
+				   cifre++;
+		   }
+		   
+		   System.out.println("Cheia introdusa are "+litere+" litere si "+cifre+" cifre");
+		
+		   if(litere==0) 
+			   Exit();
+		   if(litere>cifre)
+		       Exit();
+		   read.close();
+	}
+	
+	
+}

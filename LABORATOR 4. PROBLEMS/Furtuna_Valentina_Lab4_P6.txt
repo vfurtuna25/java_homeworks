@@ -1,0 +1,43 @@
+/*Furtuna Valentina Problema 6.
+ *  Definiți un șir unidimensional de valori de tip char, având 
+ *  numărul mai mic sau cel mult egal cu un n citit de la 
+tastatură. Fiecare valoare conține valori alfa-numerice generate 
+aleator. Transformați șirul de caractere într-un 
+obiect de tip String. Afișați valoarea inițială și apoi valoarea
+ obținută prin înlocuirea fiecărui caracter numeric cu 
+‘*’
+ * */
+
+import java.util.Scanner;
+
+public class Problema6 {
+
+	public static void main(String[] args) {
+		
+		Scanner read = new Scanner(System.in);
+		System.out.println("Introduceti dimensiunea maxima");
+		
+		int n=read.nextInt();
+		read.nextLine();
+		int dim=(int) (Math.random() *n);
+		
+		System.out.println("Dimensiunea generata random este "+dim);
+		char c1[] = new char[dim]; 
+		dim = read.nextInt();
+		read.nextLine();
+		for (int i=0; i<dim; i++)
+			c1[i] = read.next().charAt(0);
+			
+		String sir="";
+		for(int i=0; i<dim; i++)
+			sir+=Character.toString(c1[i]);
+	
+		System.out.print("Sirul creat este: "+sir);
+			
+		sir = sir.replaceAll("\\d", "*");
+		System.out.println("Noul sir este "+sir);
+		read.close();
+		
+
+ }	
+}

@@ -1,0 +1,52 @@
+//Furtuna Valentina P2
+/*. Scrieți o aplicație Java care, în cadrul metodei main( ), conține o 
+ * secvență de cod care poate să lanseze excepții de tip 
+ArithmeticException, ArrayIndexOutOfBoundsException, NullPointerException,
+ NumberFormatException și altele pe care 
+considerați că e util să le testați. Afișați în cadrul blocurilor catch
+ mesajul generat de aceste excepții. În blocul finally, 
+afișați mesajul ”Am prins sau nu excepții*/
+import java.util.Scanner;
+
+public class Problema2 {
+
+	public static void main(String args[]) {
+		Scanner in=new Scanner (System.in);
+		
+		try {
+			
+			int tablou[] = null;
+			
+			
+			tablou=new int[10];
+			for(int i=0;i<10;i++)   
+				tablou[i]=i;
+			
+			double rezultat=tablou[6]/tablou[0]; 
+			
+			
+			String intreg ="numar";
+			int integer=Integer.parseInt(intreg);
+			
+		}catch(ArithmeticException e) {
+			System.out.println("Am prins o exceptie aritmetica");
+			
+		}
+		catch( ArrayIndexOutOfBoundsException e2) {
+			System.out.println("Am prins o exceptie a index-ului de parcurgere");
+		}
+		catch(NullPointerException e3) {
+			System.out.println("Am prins o exceptie a pointer-ului null");
+		}
+		catch(NumberFormatException e4) {
+			System.out.println("Am prins o exceptie a formatului");
+		}
+			
+		finally {
+			System.out.println("Am prins sau nu exceptii");
+		}
+		
+		
+		in.close();
+	}
+}

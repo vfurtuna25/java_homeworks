@@ -1,0 +1,155 @@
+//Furtuna Valentina P7. 
+/*Definiti un pachet Java numit imageProcessor care contine o clasa numita MyImage. Clasa contine toate metodele 
+necesare initializarii si modificarii valorilor dintr-o matrice de pixeli de dimensiune m x n. Fiecare pixel este o instanta a 
+unei alte clase numita Pixel (inclusa de asemenea in pachet) care contine 3 variabile intregi R, G si B care pot avea valori 
+intre 0 si 255.*/
+
+import java.util.Scanner;
+
+import imageProcessor.*;
+
+public class Aplicatie {
+	public static void main(String args[]) {
+		MyImage ob=new MyImage();
+		Scanner in=new Scanner(System.in); 
+		
+		System.out.println("Introduceti dimeniunile matricii ");
+		int m=in.nextInt();
+		int n=in.nextInt();
+		
+		int R=(int) (Math.random() *255);
+		int G=(int) (Math.random() *255);
+		int B=(int) (Math.random() *255);
+		
+		ob.initializare(m, n, R, G, B);
+		
+		System.out.println("Care sunt valorile limita pentru parametrii RGB? ");
+		System.out.println("R: ");
+		R=in.nextInt();
+		
+		System.out.println("G: ");
+		G=in.nextInt();
+		
+		System.out.println("B: ");
+		B=in.nextInt();
+		
+		ob.eliminareLimite(m, n, R, G, B);
+		
+		ob.Gri(m, n);
+		
+		ob.eliminareComponente(m, n);
+		
+		in.close();
+		
+	}
+}
+--------------------------------------------------------------------------------------------------
+package imageProcessor;
+
+public class MyImage {
+	Pixel ob[][];
+	
+	
+	
+	public void initializare(int m,int n,int R,int G,int B) {
+		ob=new Pixel[m][n];
+		for(int i=0;i<m;i++) 
+		{ ob=new Pixel[m][];
+			for(int j=0;i<n;j++) {
+			ob[i][j]=new Pixel();
+				ob[i][j].setR(R);
+				ob[i][j].setG(G);
+				ob[i][j].setB(B);
+			}
+			
+			
+		}
+	}
+	
+	public void Gri(int m,int n) {
+		long start = System.currentTimeMillis();
+		for(int i=0;i<m;i++) 
+			for(int j=0;i<n;j++) {
+		int gri=(int) (0.21*ob[i][j].getR()+0.71*ob[i][j].getG()+0.07*ob[i][j].getB());
+		ob[i][j].setR(gri);
+		ob[i][j].setG(gri);
+		ob[i][j].setB(gri);
+			}
+		long finish = System.currentTimeMillis();
+		long duration = finish - start;
+		System.out.println("Durata transformarii in tonuri de gri: "+duration+" milisecunde ");
+	}
+	
+	public void eliminareComponente(int m,int n) {
+		long start = System.currentTimeMillis();
+
+
+		for(int i=0;i<m;i++) 
+			for(int j=0;i<n;j++) {
+		ob[i][j].setR(0);
+		ob[i][j].setG(0);
+		ob[i][j].setB(0);
+			}
+		long finish = System.currentTimeMillis();
+		long duration = finish - start;
+		System.out.println("Durata eliminarii tuturor componentelor: "+duration+" milisecunde ");
+	}
+	
+	public void eliminareLimite(int m,int n,int R,int G,int B) {
+		long start = System.currentTimeMillis();
+		for(int i=0;i<m;i++) 
+			for(int j=0;i<n;j++)
+			{
+				if(ob[i][j].getR() <R) ob[i][j].setR(0);
+				if(ob[i][j].getG() <G) ob[i][j].setG(0);
+				if(ob[i][j].getB() <B) ob[i][j].setB(0);
+				
+			}
+		long finish = System.currentTimeMillis();
+		long duration = finish - start;
+		System.out.println("Durata eliminarii tuturor componentelor ce se aflau in afara limitelor: "+duration+" milisecunde ");
+		
+	}
+	
+	
+	
+}
+----------------------------------------------------------------------------------------------------------
+package imageProcessor;
+
+public class Pixel {
+	private int R;
+	private int G;
+	private int B;
+	
+	Pixel() {
+		R=0;
+		G=0;
+		B=0;
+	}
+	
+	
+	public int getR() {
+		return R;
+	}
+
+	public void setR(int r) {
+		R = r;
+	}
+
+	public int getG() {
+		return G;
+	}
+
+	public void setG(int g) {
+		G = g;
+	}
+
+	public int getB() {
+		return B;
+	}
+
+	public void setB(int b) {
+		B = b;
+	}
+}

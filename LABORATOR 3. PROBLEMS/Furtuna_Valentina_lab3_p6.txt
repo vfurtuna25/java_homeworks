@@ -1,0 +1,41 @@
+//Furtuna Valentina P6. Scrieti un program Java care genereaza 2 valori 
+//aleatoare si efectueaza asupra lor cateva operatii matematice.
+
+
+
+import java.util.Scanner;
+import java.lang.Math;
+
+public class Lab3ex4{
+	
+	
+	public static void main(String[] args) {
+		
+		double x, y;
+		
+		x = Math.random(); // random number from 0 to 1 
+		System.out.println("Valoarea primului numar aleatoriu:   " + x);
+		y = Math.random(); // random number from 0 to 1
+		System.out.println("Valoarea al doilea numar aleatoriu:   " + y);
+		
+		
+		System.out.println("Unghiul de tg dintre y si x:   "+Math.atan2(y, x));
+		System.out.println("Unghiul de tg dintre x si y:   "+Math.atan2(x, y)); 
+		
+		System.out.println("Suma dintre x si y:   "+(x+y));
+		
+		System.out.println("Diferenta dintre x si y:   "+(x-y));
+		System.out.println("Diferenta dintre y si x:   "+(y-x));
+
+
+		System.out.println("Produsul dintre x si y:   "+(x*y));
+		
+		System.out.println("Catul dintre x si y:   "+(x/y));
+		System.out.println("Catul dintre y si x:   "+(y/x));
+		
+		System.out.println("Valoarea radicalului din suma patratelor numerelor:    "+Math.hypot(x, y));
+		
+	}
+	
+	
+}

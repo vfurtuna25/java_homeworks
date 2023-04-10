@@ -1,0 +1,201 @@
+/*Furtuna Valentina P3.
+ * 
+ * 3. Implementați o aplicație în cadrul căreia să aveți o 
+ * clasă SetterGetter generică ce permite setarea și returnarea 
+ * valorilor atributelor pentru mai multe tipuri de obiecte. 
+ * 
+DE EXEMPLU: având clasele Copil, Adult și Pensionar, să se poată 
+seta și returna numele și vârsta acestora. Creați colecții cu 
+intrări unice de obiecte de tip Copil, Adult, Pensionar pe care 
+să le populați cu date citite din consolă. Afișați datele
+ preluate în diferite moduri.
+*/
+
+
+//
+
+package tema3;
+
+import java.util.Scanner;
+import java.util.Collection;
+import java.util.ArrayList;
+
+
+
+class Text<Denumire, Autor, Volum extends Number>{
+	Denumire nume;
+	Autor autor;
+	Volum volum;
+	
+//----------------------------------------------------------------	
+	public void setDenumire(Denumire nume) {
+		this.nume=nume;}
+	public String getDenumire() {
+		return nume.toString();}
+
+//----------------------------------------------------------------		
+	public void setAutor(Autor autor) {
+		this.autor=autor;}
+	public String getAutor() {
+		return autor.toString();}
+	
+//----------------------------------------------------------------	
+	public void setVolum(Volum volum) {
+		this.volum=volum;} 
+	public int getVolum() {
+		return volum.intValue();}
+}
+
+
+class Nuvela<Denumire, Autor, Volum extends Number>{
+	Denumire nume;
+	Autor autor;
+	Volum volum;
+	
+//----------------------------------------------------------------	
+	public void setDenumire(Denumire nume) {
+		this.nume=nume;}	
+	public String getDenumire() {
+		return nume.toString();}
+
+//----------------------------------------------------------------		
+	public void setAutor(Autor autor) {
+		this.autor=autor;}
+	public String getAutor() {
+		return autor.toString();}
+	
+//----------------------------------------------------------------	
+	public void setVolum(Volum volum) {
+		this.volum=volum;} 
+	public int getVolum() {
+		return volum.intValue();}
+}
+
+class Roman<Denumire, Autor, Volum extends Number>{
+	Denumire nume;
+	Autor autor;
+	Volum volum;
+	
+//----------------------------------------------------------------	
+	public void setDenumire(Denumire nume) {
+		this.nume=nume;}
+	public String getDenumire() {
+		return nume.toString();}
+
+//----------------------------------------------------------------		
+	public void setAutor(Autor autor) {
+		this.autor=autor;}
+	public String getAutor() {
+		return autor.toString();}
+	
+//----------------------------------------------------------------	
+	public void setVolum(Volum volum) {
+		this.volum=volum;} 
+	public int getVolum() {
+		return volum.intValue();}
+	
+}
+
+
+
+
+//------------------------------------------------------clasa Setter Getter
+
+public class SetterGetter {
+
+	private static Scanner in = new Scanner(System.in);
+	public static void main(String [] args) {
+	
+	//-----------------------------------------------
+		Text<String, String, Integer> text = new Text<String, String, Integer>();
+		
+		System.out.println("Introduceti denumirea textului: ");
+		String den1=in.next();
+		text.setDenumire(den1);
+		
+		System.out.println("Introduceti numele autorului: ");
+		String autor1=in.next();
+		text.setAutor(autor1);
+		
+		System.out.println("Introduceti volumul [nr de pagini] a textului: ");
+		int volum1=in.nextInt();
+		text.setVolum(volum1);
+		
+		System.out.println("\tDatele despre text sunt:");
+		System.out.println("Denumire: "+text.getDenumire()+"; Autor: "+text.getAutor());  
+		System.out.println("Volum: "+text.getVolum());
+	//-----------------------------------------------	
+		Nuvela<String, String, Integer> nuvela = new Nuvela<String, String, Integer>();
+		
+		System.out.println("\n\tIntroduceti denumirea nuvelei: ");
+		String den2=in.next();
+		nuvela.setDenumire(den2);
+		
+		System.out.println("Introduceti numele autorului: ");
+		String autor2=in.next();
+		nuvela.setAutor(autor2);
+		
+		System.out.println("Introduceti volumul [nr de pagini] a nuvelei: ");
+		int volum2=in.nextInt();
+		nuvela.setVolum(volum2);
+		
+		System.out.println("\tDatele despre nuvela sunt:");
+		System.out.println("Denumire: "+nuvela.getDenumire());  
+		System.out.println("Volum: "+nuvela.getVolum());
+	//-----------------------------------------------	
+		Roman<String, String, Integer> roman = new Roman<String, String, Integer>();
+		
+		System.out.println("\n\tIntroduceti denumirea cartii: ");
+		String den3=in.next();
+		roman.setDenumire(den3);
+		
+		System.out.println("Introduceti numele autorului: ");
+		String autor3=in.next();
+		roman.setAutor(autor3);
+		
+		System.out.println("Introduceti volumul [nr de pagini] a romanului: ");
+		int volum3=in.nextInt();
+		roman.setVolum(volum3);
+	
+		System.out.println("\tDatele despre roman sunt:");
+		System.out.println("Denumire: "+roman.getDenumire()+"; Autor: "+roman.getAutor());  
+		System.out.println("Volum: "+roman.getVolum());
+
+	//-----------------------------------------------		
+		
+		Collection<String> colectie=new ArrayList<String>();
+			colectie.add(text.getDenumire());
+			colectie.add(nuvela.getDenumire());
+			colectie.add(roman.getDenumire());
+
+			
+			System.out.println("\nColectia este: ");
+			for(String i:colectie) 
+			{
+				System.out.println(i);
+			}	
+		
+		Collection<String> colectie1=new ArrayList<String>();
+			colectie1.add(text.getAutor());
+			colectie1.add(nuvela.getAutor());
+			colectie1.add(roman.getAutor());
+
+			
+			System.out.println("\nColectia este: ");
+			for(String i:colectie1) 
+			{
+				System.out.println(i);
+			}	
+		
+		Collection<Integer> colectie2=new ArrayList<Integer>();
+			colectie2.add(text.getVolum());
+			colectie2.add(nuvela.getVolum());
+			colectie2.add(roman.getVolum());
+
+			System.out.println("\nColectia este: "+colectie2);
+			
+		
+		
+	in.close();	
+	}
+}

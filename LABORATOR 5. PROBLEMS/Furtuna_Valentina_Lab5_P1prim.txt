@@ -1,0 +1,98 @@
+//Furtuna Valentina 2123
+
+// 1’. sa se implementeze 4 interfețe funcționale, 
+//câte una pentru fiecare metodă.
+//Interfețele vor fi implementate în cadrul unei singure clase. 
+//Instanțiați clasa și verificați operațiile implementate
+
+
+package laborator5;
+
+import java.lang.Math;
+import java.util.Scanner;
+
+public interface AdunareOperatie{
+	 public double adunare (double x, double y);
+}
+
+public interface ScadereOperatie{
+	public double scadere (double x, double y);
+	}
+
+public interface InmultireOperatie{
+	 public double inmultire (double x, double y);
+}
+
+public interface ImpartireOperatie{
+	public double impartire (double x, double y);
+}
+
+
+public interface RadicalOperatie{
+	public double radical1 (double x);
+    public double radical2 (double y);
+}
+
+public interface PowerOperatie{
+	public double putere (double x, double y);
+}
+
+
+public class Tema{        
+        public static void main(String args[]) {
+                
+           Scanner read = new Scanner(System.in);
+           System.out.println("\nIntroduceti 2 numere: ");
+         
+           double x = read.nextDouble();
+           double y = read.nextDouble();
+           
+   
+           AdunareOperatie ob1 = new AdunareOperatie() {
+        	   public double adunare (double x, double y) {
+        		   return (double)x+y;
+        		    }  
+           };
+           
+           ScadereOperatie ob2 = new ScadereOperatie() {
+        	   public double scadere(double x, double y) {
+        		   return (double)x-y;
+        	   }
+           };
+           
+           InmultireOperatie ob3 = new InmultireOperatie() {
+        	   public double inmultire(double x, double y) {
+        		   return (double)x*y;
+        	   }
+           };
+           
+           ImpartireOperatie ob4 = new ImpartireOperatie() {
+        	   public double impartire(double x, double y) {
+        		   return (double)x/y;
+        	   }
+           };
+           
+           RadicalOperatie ob5 = new RadicalOperatie() {
+        	   public double radical1 (double x) {
+        		   return (double)Math.sqrt(x);}
+        	    public double radical2 (double y) {
+        	    	return (double)Math.sqrt(y);}
+           };
+           
+           PowerOperatie ob6 = new PowerOperatie() {
+        	   public double putere (double x, double y) {
+        			return (double)Math.pow(x, y);}
+           };
+                
+   
+          System.out.println("\nAdunarea nr: "+ob1.adunare(x, y));  
+          System.out.println("\nScaderea nr: "+ob2.scadere(x, y));
+          System.out.println("\nInmultirea nr: "+ob3.inmultire(x, y));        
+          System.out.println("\nImpartirea nr: "+ob4.impartire(x, y));
+          System.out.println("\nRadicalul primului numar este: "+ob5.radical1(x));
+          System.out.println("\nRadicalul celui de al doilea numar este: "+ob5.radical2(y));
+            
+          System.out.printf("\n%.2f la puterea %.2f ",x,y);
+          System.out.println(" este: "+ob6.putere(x, y));
+        }
+}

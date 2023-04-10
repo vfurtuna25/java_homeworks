@@ -1,0 +1,71 @@
+package lab5;
+
+import java.lang.Math;
+import java.util.Scanner;
+
+public interface Opers{
+	
+	public double adunare (double x, double y);
+	public double scadere (double x, double y);
+	public double inmultire (double x, double y);
+	public double impartire (double x, double y);
+	public double radical1 (double x);
+	public double radical2 (double y);
+	public double putere (double x, double y);
+	
+}
+
+
+public class Tema implements Opers{
+
+	public double adunare(double x, double y)
+	{
+		return (double)x+y;
+	}
+	
+	public double scadere (double x, double y) {
+		return (double)x-y;
+	}
+	
+	public double inmultire (double x, double y) {
+		return (double)x*y;
+	}
+	
+	public double impartire (double x, double y) {
+		return (double)x/y;
+	}
+	
+	public double radical1 (double x) {
+		return (double) Math.sqrt(x);
+	}
+	
+	public double radical2 (double y) {
+		return (double) Math.sqrt(y);
+	}
+	
+	public double putere (double x, double y) {
+		return (double) Math.pow(x, y);
+	}
+	
+	private static Scanner read;
+	
+	public static void main(String args[]) {
+		
+		read = new Scanner(System.in);
+		System.out.println("\nIntroduceti 2 numere:");
+		
+		Tema ob = new Tema();
+		
+		double x = read.nextDouble();
+		double y = read.nextDouble();
+		
+		System.out.println("\nAdunarea nr: "+ob.adunare(x, y));
+		System.out.println("\nScaderea nr: "+ob.scadere(x, y));
+		System.out.println("\nInmultirea nr: "+ob.inmultire(x, y));	
+		System.out.println("\nImpartirea nr: "+ob.impartire(x, y));
+		System.out.println("\nRadicalul primului numar este: "+ob.radical1(x));
+		System.out.println("\nRadicalul celui de al doilea numar este: "+ob.radical2(y));
+		System.out.printf("\n%.2f la puterea %.2f ",x,y);
+	    System.out.println(" este: "+ob.putere(x, y));
+	}
+}

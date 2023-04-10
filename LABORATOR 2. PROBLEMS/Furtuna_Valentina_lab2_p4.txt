@@ -1,0 +1,29 @@
+//Furtuna Valentina. P4.  aplicatie Java in care cititi de la tastatura un 
+//numar intreg si afisati toti divizorii numarului citi
+
+import java.util.Scanner;
+
+
+public class Main
+ {
+      public static void main(String[] args) {
+      
+    	  Scanner scanner = new Scanner(System.in);
+    	  int n, x;
+    	  System.out.println("Introduceti un numar intreg: ");
+    	  n=scanner.nextInt();
+    	  
+    	  x=n;
+    	  
+    	  for (int i=0; i<n; i++) 
+    	  {
+    		if (n%x==0) {
+    			System.out.printf("Divizorul dintre %d si %d este: %d\n",n,x,n/x);
+    			
+    		}
+    		x--;
+    		
+    	  }
+    	  
+      }
+ }

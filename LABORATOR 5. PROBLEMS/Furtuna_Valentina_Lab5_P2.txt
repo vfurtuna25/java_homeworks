@@ -1,0 +1,128 @@
+//Furtuna Valentina P2. 
+//Definiți o interfață denumită FormaGeometrica care are 2 metode care primesc ca parametru o valoare integer și 
+//returnează o valoare double reprezentînd aria, respectiv perimetrul unei forme geometrice echilaterale.
+
+
+package lab5prob2;
+
+import java.util.Scanner;
+import java.lang.Math;
+
+public interface Forma_Geometrica {
+	public default float Aria(){
+		return 0;
+			}
+	public default float Perimetru(){
+		return 0;
+			}
+
+}
+class Main{
+	public static void main(String... args) {
+		Scanner in=new Scanner(System.in);
+		System.out.println("Introduceti numarul de forme geometrice");
+		int n=in.nextInt();
+		Patrat[] patrate=new Patrat[n];
+		HexagonRegulat[] hex=new HexagonRegulat[n];
+		TriunghiEchilateral[] triunghi=new TriunghiEchilateral[n];
+		for(int i=0;i<n;i++)
+		{
+			patrate[i]=new Patrat();
+			System.out.println("Introduceti latura pentru patratul ["+ i +"]");
+			int lat=in.nextInt();
+			patrate[i].setLatura(lat);
+		}
+		for(int i=0;i<n;i++)
+		{
+			triunghi[i]=new TriunghiEchilateral();
+			System.out.println("Introduceti latura pentru triunghiul ["+ i +"]");
+			int lat=in.nextInt();
+			triunghi[i].setLatura(lat);
+		}
+		
+		for(int i=0;i<n;i++)
+		{
+			hex[i]=new HexagonRegulat();
+			System.out.println("Introduceti latura hexanonului ["+ i +"]");
+			int lat=in.nextInt();
+
+			hex[i].setLatura(lat);
+			
+		}
+		
+		float Arie=0;
+		float Perimetru=0;
+		
+		for(int i=0;i<n;i++)
+		{
+			Arie+=hex[i].Aria()+patrate[i].Aria()+triunghi[i].Aria();
+			Perimetru+=hex[i].Perimetru()+patrate[i].Perimetru()+triunghi[i].Perimetru();
+		}
+		System.out.println("Aria totala este "+Arie);
+		System.out.println("Perimetrul total este "+Perimetru);
+		in.close();
+	}
+}
+	
+	
+-----------------------------------------------------------------------------------------------------------------
+package lab5prob2;
+
+public class Patrat implements Forma_Geometrica {
+int l;
+public  float Aria(){
+	return (float) (l*l);
+		}
+public  float Perimetru(){
+	return (float) (4*l);
+		}
+
+public float getLatura() {
+	return l;
+}
+public void setLatura(int l) {
+	this.l = l;
+}
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------
+package lab5prob2;
+
+public class TriunghiEchilateral {
+	int latura;
+	public  float Aria(){
+		return (float) (latura*latura*Math.sqrt(3)/4);
+			}
+	public  float Perimetru(){
+		return 3*latura;
+			}
+	public float getLatura() {
+		return latura;
+	}
+	public void setLatura(int latura) {
+		this.latura = latura;
+	}
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------
+package lab5prob2;
+
+public class HexagonRegulat {
+int a;
+public  float Aria(){
+	return (float) ((3*Math.sqrt(3)*a*a)/2);
+		}
+public  float Perimetru(){
+	return 6*a;
+		}
+public float getLatura() {
+	return a;
+}
+public void setLatura(int a) {
+	this.a = a;
+}
+}
+

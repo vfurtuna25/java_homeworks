@@ -1,0 +1,70 @@
+/*Furtuna Valentina
+ * 1. . Folosind mecanismul preluării datelor de la tastatură cu un BufferedReader și InputStreamReader, preluați: un mesaj 
+de tip String, ziua ca intreg, luna de tip String si anul ca un întreg. Procesul se va încheia în momentul trecerii la o nouă 
+linie, când se va afișa fiecare câmp pe o linie separată. Afisati de asemenea toate campurile in ordinea in care au aparut.*/
+
+
+import java.util.*;
+import java.io.*;
+import java.lang.*;
+
+public class PROBLEMA1 {
+
+	private Formatter x;
+	
+	public void openFile() {
+		try {
+			x = new Formatter("problema1.txt");
+		} catch (Exception e) {
+			System.out.println("you have an error");
+		}
+	}
+	
+	public String readRecords() {
+		String month = null;
+		int day;
+		int year;
+		String string = new String();
+		
+	// case 1 //
+		try{ 
+			System.out.println ("Scrieti data (date-month-year)");
+			
+			BufferedReader inData = new BufferedReader(new InputStreamReader(System.in));
+		    string = inData.readLine();
+		    StringTokenizer token = new StringTokenizer(string," ");
+		    
+		    day = Integer.valueOf(token.nextToken());
+		    month = token.nextToken();
+		    year = Integer.valueOf(token.nextToken());
+		   	
+		    System.out.println("\n\tZiua: " + day + "\n\tLuna: " + month +"\n"+ "\tAnul: " + year);
+		    
+		} 
+		catch(Exception e){
+				System.out .println(e);
+				}
+		return(string);
+	}
+
+	public void addRecords() {
+		x.format("Data introdusa de la tastatura este: ");
+		x.format(readRecords());
+	}
+	
+	public void closeFile() {
+		x.close();
+	}
+
+//----------------------------------------------------MAIN
+
+	public static void main(String[] args) {
+
+     PROBLEMA1 g = new PROBLEMA1();
+        g.openFile();
+		g.addRecords();
+		g.closeFile();
+	}
+
+		
+}

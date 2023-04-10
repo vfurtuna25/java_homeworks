@@ -1,0 +1,58 @@
+//Furtuna Valentina P4. 
+
+/*4. Creați o clasă derivată din Exception, numită SuperExceptie.
+ O a doua clasă ExceptieMaiMica este derivată din SuperExceptie. 
+În constructorii claselor afisați un mesaj ce indică excepția generată. 
+În cadrul unei alte clase creați o metodă a( ) ce semnalizeaza (aruncă) o excepție de tip ExceptieMaiMica 
+și o metodă b( ) ce semnalizeaza o excepție de tip SuperExceptie.
+ În cadrul metodei main( ) apelați aceste metode și încercați să determinați tipul de excepție semnalizată,
+ precum și dacă blocul catch aferent tipului de exceptie ExceptieMaiMica poate prinde o SuperExcepție. */
+
+
+import java.util.Scanner;
+
+class SuperExceptie extends Exception{
+	 SuperExceptie() {
+		System.out.println("SuperExceptia a fost apelata");
+	}
+}
+
+class ExceptieMaiMica extends SuperExceptie{
+	ExceptieMaiMica(){
+		System.out.println("ExceptieMaiMica a fost apelata");
+	}
+}
+class X{
+	void a(String text) throws SuperExceptie{
+		if(text.equalsIgnoreCase("super")){
+			throw new SuperExceptie();
+		}
+		
+			
+		
+	}
+	
+	void b(String text) throws ExceptieMaiMica{
+		if(text.equalsIgnoreCase("mica")){
+			throw new ExceptieMaiMica();
+		}
+	}
+}
+class Baza {
+	public static void main(String args[]) {
+		Scanner in=new Scanner(System.in);
+		X ob=new X();
+		System.out.println("Daca introduceti \"super \" sau \"mica\" veti activa exceptiile");
+		try {
+		String ex=in.next();
+		ob.a(ex);
+		ob.b(ex);
+		
+		}catch(SuperExceptie e) {
+			e.toString(); 
+		}
+		
+			
+		}
+		
+	}

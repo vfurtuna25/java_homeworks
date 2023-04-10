@@ -1,0 +1,84 @@
+//Furtuna Valentina Problema 1secund
+//implementați expresii lambda pentru definirea operațiilor aritmetice
+
+
+import java.lang.Math;
+import java.util.Scanner;
+
+public interface AdunareOperatie{
+	 public double adunare (double x, double y);
+}
+
+public interface ScadereOperatie{
+	public double scadere (double x, double y);
+	}
+
+public interface InmultireOperatie{
+	 public double inmultire (double x, double y);
+}
+
+public interface ImpartireOperatie{
+	public double impartire (double x, double y);
+}
+
+public interface PowerOperatie{
+	public double putere (double x, double y);
+}
+
+
+public class Tema{        
+        public static void main(String args[]) {
+                
+           Scanner read = new Scanner(System.in);
+           System.out.println("\nIntroduceti 2 numere: ");
+         
+           double x = read.nextDouble();
+           double y = read.nextDouble();
+           
+   
+           AdunareOperatie ob1 = new AdunareOperatie() {
+        	   public double adunare (double x, double y) {
+        		   return (double)x+y;
+        		    }  
+           };
+           
+           ScadereOperatie ob2 = new ScadereOperatie() {
+        	   public double scadere(double x, double y) {
+        		   return (double)x-y;
+        	   }
+           };
+           
+           InmultireOperatie ob3 = new InmultireOperatie() {
+        	   public double inmultire(double x, double y) {
+        		   return (double)x*y;
+        	   }
+           };
+           
+           ImpartireOperatie ob4 = new ImpartireOperatie() {
+        	   public double impartire(double x, double y) {
+        		   return (double)x/y;
+        	   }
+           };
+           
+
+           PowerOperatie ob5 = new PowerOperatie() {
+        	   public double putere (double x, double y) {
+        			return (double)Math.pow(x, y);}
+           };
+                
+    
+          AdunareOperatie  adunare=(c,v)->c+v;
+          ScadereOperatie  scadere=(c,v)->c-v;
+          InmultireOperatie  inmultire=(c,v)->c*v;
+          ImpartireOperatie impartire=(c,v)->c/v;
+          PowerOperatie putere=(c,v)->Math.pow(c, v);
+           
+          System.out.println("\nAdunarea nr: "+ob1.adunare(x, y));  
+          System.out.println("\nScaderea nr: "+ob2.scadere(x, y));
+          System.out.println("\nInmultirea nr: "+ob3.inmultire(x, y));        
+          System.out.println("\nImpartirea nr: "+ob4.impartire(x, y));
+  
+          System.out.printf("\n%.2f la puterea %.2f ",x,y);
+          System.out.println(" este: "+ob5.putere(x, y));
+        }
+}

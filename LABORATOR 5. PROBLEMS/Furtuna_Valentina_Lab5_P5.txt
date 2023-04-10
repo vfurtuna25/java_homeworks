@@ -1,0 +1,87 @@
+//Furtuna Valentina P5
+//Definiți un sir de elemente de tip String. Folosind expresii lambda, ordonați-l după următoarele metode: lungime (mic-
+//>mare), inversul lungimii (mare->mic), ordine alfabetică, șirurile de caractere ce încep cu litera M vor fi primele, urmate 
+//de restul șirurilor.
+
+
+import java.util.Scanner;
+import java.util.Arrays;
+
+
+interface Sir{
+	
+	String[] operation(String []tab);
+		
+}
+
+public class Sirul {
+
+	private String[] useOperation(String []tab, Sir op) {
+		return op.operation(tab);
+	}
+	
+	public static void main(String []args) {
+		Scanner in=new Scanner(System.in);
+		
+		System.out.println("Cate elemente contine tabloul? ");
+		int n=in.nextInt();
+		
+		String []tab=new String[n];
+		
+		System.out.println("Introduceti cele "+n+" siruri");
+		for(int i=0;i<n;i++) 	
+			tab[i]=in.next();
+		
+		
+		Sirul ob=new Sirul();
+		
+		Sir lungime = (String[]tabb)-> { 
+
+			Arrays.sort(tabb, (a, b)->Integer.compare(a.length(), b.length()));
+			return tabb;
+		};
+
+		Sir lungimeInv = (String[]tabb)-> { 
+
+			Arrays.sort(tabb, (a, b)->Integer.compare(a.length(), b.length())*-1);
+			return tabb;
+		};
+		
+		Sir literaM = (String[]tabb)-> { 
+
+			for(int i=0;i<tabb.length;i++){
+				char c=tabb[i].charAt(0);
+				if(c=='m') {
+					String aux=tabb[i];
+					int q=i;
+					for(int j=0;j<q;j++) {
+						tabb[j+1]=tabb[j];
+						
+						
+					}
+					tabb[0]=aux;
+					
+				}
+			}
+			return tabb;
+		};
+		System.out.println("------------ORDONATE DUPA LUNGIME CRESCATOR:");
+		ob.useOperation(tab,lungime);
+		
+		for(int i=0;i<n;i++) 
+			System.out.println(tab[i]+" ");
+	
+		System.out.println("------------ORDONATE DUPA LUNGIME DESCRESCATOR:");
+		ob.useOperation(tab,lungimeInv);
+		
+		for(int i=0;i<n;i++) 
+			System.out.println(tab[i]+" ");
+		
+		System.out.println("------------ORDONATE DUPA PRIMA LITERA A SIRULUI 'M':");
+		ob.useOperation(tab,literaM);
+		for(int i=0;i<n;i++) 
+			System.out.println(tab[i]+" ");
+		in.close();
+	}
+	
+}

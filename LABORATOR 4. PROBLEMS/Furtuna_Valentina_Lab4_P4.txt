@@ -1,0 +1,103 @@
+
+
+import java.util.Scanner;
+
+/*Furtuna Valentina P4.
+ *  clasa Java numită Persoana cu atributele private: nume (String), 
+ *  latitudine și longitudine (float). Clasa 
+conține un constructor explicit fără parametri care inițializează 
+numele cu null și latitudinea și longitudinea cu 0. 
+Metoda finalize() va fi implementată pentru a afișa un mesaj la 
+distrugerea obiectelor. Atributele clasei se pot 
+modifica prin metodele mutator specifice setNume(), setLatitudine() 
+și setLongitudine(). Atributele vor fi 
+returnate prin metode accesor specifice. Instanțiați n obiecte, 
+citiți și setati valorile atributelor, apoi afișați 
+datele tuturor obiectelor
+ */
+
+
+public class Persoana {
+
+		private String nume;
+		private float latt, longt; 
+	
+		Persoana () {
+			setNume(null);
+			setLatt(0);
+			setLongt(0);
+		}
+	
+		public void finalize() {
+			System.out.println("Obiectul a fost distrus");
+			System.gc();
+		}
+	
+		public String getNume() {
+			return nume;
+		}
+	
+		public void setNume(String nume) {
+			this.nume = nume;
+		}
+	
+		public float getLatt() {
+			return latt;
+		}
+		
+		public void setLatt(float latt) {
+			this.latt = latt;
+		}
+	
+		public float getLongt() {
+			return longt;
+		}
+	
+		public void setLongt(float longt) {
+			this.longt=longt;
+		}
+	
+
+	public static void main(String[] args) {
+	
+	Scanner read = new Scanner(System.in);
+	
+	System.out.println("Cate obiecte doriti?");
+	int n=read.nextInt();
+	
+
+	
+	Persoana pers[]= new Persoana[n];
+	
+	for( int i=0; i<n; i++)
+	{
+		read.nextLine();
+		
+		pers[i]=new Persoana();
+		
+		System.out.println("Introduceti numele: ");
+		String nume = read.nextLine();
+		
+		System.out.println("Introduceti valoarea latitudinii");
+		float latt = read.nextFloat();
+		
+		System.out.println("Introduceti valoarea longitudinii");
+		float longt = read.nextFloat();
+		
+		pers[i].setNume(nume);
+		pers[i].setLatt(latt);
+		pers[i].setLongt(longt);
+	}
+	
+	
+	for(Persoana p:pers) {
+		System.out.println("\nNume "+p.getNume());
+		System.out.println("Latitudine "+p.getLatt());
+		System.out.println("Longitudine "+p.getLongt());
+	}
+		
+	read.close();	
+		
+	}
+	
+}

@@ -1,0 +1,126 @@
+/*Furtuna Valentina P2
+ * 
+ * Creați o clasă Calculator ce are implementate metode de adunare,
+ * scădere, înmulțire și împărțire. Metodele vor avea 
+ca intrare tipuri de date generice și vor returna rezultatul conform
+acestor date. De exemplu, suma a doi întregi va 
+returna tot un întreg, pentru două numere de tip float se va returna
+tot un float. Aplicarea metodelor de adunare și 
+scădere este permisă și pe variabile de tip String, restul operațiilor
+fiind interzise pt. acest tip de date (mesaj de eroare). 
+Scrieți aceeași clasă folosind supraîncărcarea metodelor.*/
+package tema2;
+
+import java.util.Scanner;
+
+class Calculator <T> {
+	
+	//-----------------------------------OPERATIA DE ADUNARE
+	/*PENTRU TIP DE DATE: INT*/
+	public <T extends Number> int Adunare (T x, T y) { 
+	       return x.intValue() + y.intValue();
+	}
+	
+	/*PENTRU TIP DE DATE: FLOAT*/
+	public <T extends Number> float adunare (T x, T y) {
+		return x.floatValue() + y.floatValue();
+	}
+	
+	/*PENTRU TIP DE DATE: STRING*/
+	public <T> String adunSir (T x, T y) {
+		return x.toString() + y.toString();
+	}
+	
+	//-----------------------------------OPERATIA DE SCADERE
+	/*PENTRU TIP DE DATE: INT*/
+	public <T extends Number> int Scadere (T x, T y) { 
+	       return x.intValue() - y.intValue();
+	}
+	
+	/*PENTRU TIP DE DATE: FLOAT*/
+	public <T extends Number> float scadere (T x, T y) {
+		return x.floatValue() - y.floatValue();
+	}
+	/*PENTRU TIP DE DATE: STRING*/
+	public <T> String difSir(T x, T y) {
+		String m = x.toString();
+		String n = y.toString();
+		if (m.contains(n))
+			m.replace(n, "");
+		return m;
+	}
+	
+	//-----------------------------------OPERATIA DE INMULTIRE
+	/*PENTRU TIP DE DATE: INT*/
+	public <T extends Number> int Inmultire(T x, T y) {
+		return x.intValue() * y.intValue();
+	}
+	
+	/*PENTRU TIP DE DATE: FLOAT*/
+	public <T extends Number> float inmultire(T x, T y) {
+		return x.floatValue() * y.floatValue();
+	}
+	
+	/*PENTRU TIP DE DATE: STRING*/
+	public <T> String inmSir(T x, T y) {
+		System.out.println("NU este posibilita inmultirea a doua siruri de caractere!");
+		return null;
+	}
+	//-----------------------------------OPERATIA DE IMPARTIRE
+	/*PENTRU TIP DE DATE: INT*/
+	
+	/*PENTRU TIP DE DATE: FLOAT*/
+	public <T extends Number> float impartire (T x, T y) {
+		float z = 1;
+		if(y.floatValue() != 0)
+			z = (x.floatValue() / y.floatValue());
+		else
+			System.out.println("Error: Numitorul trebuie sa fie diferit de 0(zero)!");
+		return z;
+	}
+	
+	/*PENTRU TIP DE DATE: STRING*/
+	public <T> String impSir(T x, T y) {
+		System.out.println("NU este posibilita impartirea a doua siruri de caractere!");
+		return null;
+	}
+
+//------------------------------MAIN
+
+public static void main(String [] args) {
+	 
+	Scanner read = new Scanner(System.in);
+	
+	
+	Calculator <Integer> ob1 = new Calculator<>();
+	System.out.println("Introduceti doua numere intregi");
+	int a = read.nextInt();
+	int b = read.nextInt();
+	System.out.println("-----------Se vor efectua urmatoarele operatii: ");
+	System.out.println("adunarea: " + ob1.Adunare(a,b));
+	System.out.println("scaderea: " + ob1.Scadere(a,b));
+	System.out.println("inmultirea: " + ob1.Inmultire(a,b));
+	System.out.println("impartirea nu se poate efectua! catul a doua nr intregi nu poate fi de tip intreg");
+	
+	Calculator <Integer> ob2 = new Calculator<>();
+	System.out.println("\nIntroduceti doua numere reale");
+	float x = read.nextFloat();
+	float y = read.nextFloat();
+	System.out.println("-----------Se vor efectua urmatoarele operatii: ");
+	System.out.println("adunarea: " + ob2.adunare(x,y));
+	System.out.println("scaderea: " + ob2.scadere(x,y));
+	System.out.println("inmultirea: " + ob2.inmultire(x,y));
+	System.out.println("impartirea: " + ob2.impartire(x,y));
+	
+	Calculator <Integer> ob3 = new Calculator<>();
+	System.out.println("\nIntroduceti doua siruri de caractere: " );
+	String m = read.next();
+	String n = read.next();
+	System.out.println("-----------Se vor efectua urmatoarele operatii: ");
+	System.out.println("adunarea: " + ob3.adunSir(m,n)); 
+	System.out.println("scaderea: " + ob3.difSir(m,n)); 
+	System.out.println("inmultirea: " + ob3.inmSir(m,n)); 
+	System.out.println("impartirea: " + ob3.impSir(m,n)); 
+	
+  }
+}

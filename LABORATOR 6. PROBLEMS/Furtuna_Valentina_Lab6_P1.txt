@@ -1,0 +1,94 @@
+/*Furtuna Valentina
+1. Scrieti un program Java care defineste un sir de valori de tip double care vor fi citite de la tastatura.
+ Tratati exceptia data de accesarea unui element cu index negativ sau mai mare decat indexul ultimului element din sir 
+(ArrayIndexOutOfBoundsException). Afisati un mesaj corespunzator in momentul detectarii exceptiei.
+ Considerati o matrice (cu numar de coloane fix pentru fiecare linie) si tratati exceptia posibil a aparea.
+ Considerati si cazul in care matricea are numar diferit de coloane la fiecare linie.*/
+import java.util.Scanner;
+
+class pentruSir{
+	
+	void Exceptie(int index,int dim) throws ArrayIndexOutOfBoundsException{
+		if(index<0 || index>=dim){
+			throw new ArrayIndexOutOfBoundsException();
+		}
+		else System.out.println("Indexul "+index+" corespunde.");
+	}	
+}
+
+class pentruMatrice{
+	
+	void Exceptie(int index1,int index2,int linii,int col) throws ArrayIndexOutOfBoundsException,MyException{
+		if(index1<0 ||index2<0 || index1>=linii ||index2>=col){
+			throw new ArrayIndexOutOfBoundsException();
+		}
+		else System.out.println("["+index1+"]["+index2+"] corespunde.");
+	}	
+	
+	void Exceptie2(int col,int fix) throws MyException {
+		if(col!=fix)
+			throw new MyException();
+	}
+}
+
+	class MyException extends Throwable{
+		//constructor
+		public MyException(){
+		//apelul constructorului clasei de baza
+		super("Numarul de coloane trebuie sa fie fix pentru fiecare linie !!!");
+		}
+		}
+
+public class problema1 {
+
+	public static void main(String args[]) {
+		Scanner in=new Scanner(System.in);
+		System.out.println("Introduceti dimensiunea sirului ");
+		int n=in.nextInt();
+		
+		double []tab=new double[n];
+		
+		pentruSir ob1 = new pentruSir();
+		try{
+			//for(int i=0;i<=n;i++)    
+				for(int i=0;i<n;i++){
+				System.out.println("\nIntroduceti elementul "+i);
+				tab[i]=in.nextDouble();
+				ob1.Exceptie(i,n);	
+			}		
+		}
+		catch(ArrayIndexOutOfBoundsException exception){
+			System.out .println("Indexul nu este corect ");
+		}
+		
+		System.out.println("\n\nIntroduceti numarul de linii pentru matrice ");
+		int m=in.nextInt();
+		System.out.println("Cate coloane trebuie sa aiba fiecare linie? ");
+		n=in.nextInt();
+		
+		int matrix[][]=new int[m][];
+		
+		pentruMatrice ob2=new pentruMatrice();
+		try {
+			
+		for(int i=0;i<m;i++)
+			{
+			System.out.println("Introduceti nr de coloane pentru linia "+i);
+			int col=in.nextInt();
+			ob2.Exceptie2(col, n);
+			matrix[i]=new int[n];
+			for(int j=0;j<col;j++) {
+				System.out.println("\nIntroduceti elementul ["+i+"]["+j+"] ");
+				matrix[i][j]=in.nextInt();
+				ob2.Exceptie(i, j, m, col);
+			}
+			}
+		}
+		catch(ArrayIndexOutOfBoundsException  | MyException  q) {
+			q.printStackTrace();
+		}
+		
+	in.close();
+	}
+
+}
